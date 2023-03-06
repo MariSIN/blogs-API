@@ -13,7 +13,7 @@ const validateLogin = async (req, res, next) => {
 
     if (!findUser) {
         return res.status(400).json({
-            message: 'Invalid Fields',
+            message: 'Invalid fields',
         });
     }
 
