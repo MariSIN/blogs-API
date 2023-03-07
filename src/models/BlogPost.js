@@ -1,4 +1,4 @@
-/* module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     const blogPost = sequelize.define('BlogPost', {
         id: { 
             allowNull: false,
@@ -13,22 +13,23 @@
         content: {
             type: DataTypes.STRING,
         },
+        userId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'User',
+                key: 'id'
+            },
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
+        },
         published: {
             type: DataTypes.DATE
         },
         updated: {
             type: DataTypes.DATE
         },
-        userId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'users',
-                key: 'id'
-            },
-            onDelete: 'CASCADE',
-            onUpdate: 'CASCADE',
-        }
+        
     },
     {
         timestamps: false,
@@ -37,16 +38,13 @@
     });
 
     blogPost.associate = (models) => {
-        blogPost.belongsTo(models.users, {
-            foreignKey: 'usersId',
-            as: 'user',
+        blogPost.belongsTo(models.User, {
+            foreignKey: { 
+                name:'userId',
+                field: 'user_id'
+            },
+            as: 'users',
         });
     };
-    blogPost.associate = (models) => {
-        blogPost.hasOne(models.postCategory, {
-            foreignKey: 'postId',
-            as: 'postCategory',
-        })
-    }
     return blogPost;
-} */
+}
