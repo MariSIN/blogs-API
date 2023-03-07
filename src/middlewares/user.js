@@ -44,8 +44,22 @@ const validatePassword = (req, res, next) => {
     next();
 };
 
+const validateUserId = async (req, res, next) => {
+    const { id } = req.params;
+
+    const findId = await User.findByPk(id);
+
+    if (!findId) { 
+        return res.status(404).json({
+        message: 'User does not exist',
+    });
+  }
+    next();
+};
+
 module.exports = {
      validateName, 
      validateEmail, 
      validatePassword, 
+     validateUserId,
     };

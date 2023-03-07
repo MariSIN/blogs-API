@@ -13,4 +13,6 @@ validateUser.validateEmail,
 
  userRouter.get('/', validateToken, userController.getUsers);
 
+ userRouter.get('/:id', validateUser.validateUserId, validateToken, userController.getById);
+
 module.exports = userRouter;
