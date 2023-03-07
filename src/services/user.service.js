@@ -1,8 +1,12 @@
+const { User } = require('../models');
 const { token } = require('../auth/token');
 
-const login = async (email, password) => { 
-    const validToken = token({ email, password });
-    return validToken;
-};
+const login = (email, password) => token({ email, password });
 
-module.exports = { login };
+const createUser = ({ displayName, email, password, image }) =>
+User.create({ displayName, email, password, image });
+
+module.exports = { 
+    login, 
+    createUser,
+ };

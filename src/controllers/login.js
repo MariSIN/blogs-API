@@ -8,4 +8,6 @@ const validLogin = async (req, res) => {
     return res.status(200).json({ token });
 };
 
-module.exports = { validLogin };
+module.exports = { 
+    validLogin, 
+};
