@@ -44,4 +44,8 @@ const validatePassword = (req, res, next) => {
     next();
 };
 
-module.exports = { validateName, validateEmail, validatePassword };
+module.exports = {
+     validateName, 
+     validateEmail, 
+     validatePassword, 
+    };

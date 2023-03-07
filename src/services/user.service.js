@@ -6,7 +6,10 @@ const login = (email, password) => token({ email, password });
 const createUser = ({ displayName, email, password, image }) =>
 User.create({ displayName, email, password, image });
 
+const getUser = () => User.findAll({ attributes: { exclude: ['password'] } });
+
 module.exports = { 
     login, 
     createUser,
+    getUser,
  };
