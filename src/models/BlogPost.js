@@ -16,12 +16,6 @@ module.exports = (sequelize, DataTypes) => {
         userId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'User',
-                key: 'id'
-            },
-            onDelete: 'CASCADE',
-            onUpdate: 'CASCADE',
         },
         published: {
             type: DataTypes.DATE
@@ -43,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
                 name:'userId',
                 field: 'user_id'
             },
-            as: 'users',
+            as: 'user',
         });
     };
     return blogPost;
