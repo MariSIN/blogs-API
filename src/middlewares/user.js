@@ -44,7 +44,7 @@ const validatePassword = (req, res, next) => {
     next();
 };
 
-const validateUserId = async (req, res, next) => {
+/*const validateUserId = async (req, res, next) => {
     const { id } = req.params;
 
     const findId = await User.findByPk(id);
@@ -55,11 +55,10 @@ const validateUserId = async (req, res, next) => {
     });
   }
     next();
-};
+};*/
 
 module.exports = {
      validateName, 
      validateEmail, 
      validatePassword, 
-     validateUserId,
     };
