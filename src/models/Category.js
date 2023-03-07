@@ -1,4 +1,4 @@
-/* module.exports = (sequelize, DataTypes) => {
+ module.exports = (sequelize, DataTypes) => {
     const category = sequelize.define('Category', {
         id: { 
             allowNull: false,
@@ -18,11 +18,5 @@
         underscored: true,
     });
 
-    category.associate = (models) => {
-        category.hasOne(models.postCategory, {
-            foreignKey: 'categoryId',
-            as: 'postCategory',
-        });
-    };
     return category;
-} */
+}
