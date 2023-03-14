@@ -1,24 +1,26 @@
 const { verifyToken } = require('../auth/token');
 
 const validateToken = async (req, res, next) => {
-  const { authorization } = req.headers;
+    const { authorization } = req.headers;
 
-  if (!authorization) {
-    return res.status(401).json({
-        message: 'Token not found',
-    });
-  }
+    if (!authorization) {
+        return res.status(401).json({
+            message: 'Token not found',
+        });
+    }
 
-  try {
-    const decoded = verifyToken(authorization);
-    req.userToken = decoded;
+    try {
+        const decoded = verifyToken(authorization);
 
-    next();
-  } catch (err) {
-    return res.status(401).json({ message: 'Expired or invalid token' });
-  }
+        req.userToken = decoded;
+        console.log(req.userToken);
+
+        next();
+    } catch (err) {
+        return res.status(401).json({ message: 'Expired or invalid token' });
+    }
 };
 
 module.exports = {
-validateToken,
+    validateToken,
 };
