@@ -48,11 +48,6 @@ const createPost = async (req, userId) => {
 };
 
 const updatePost = async (title, content, id) => {
-     /* const result = await BlogPost.update(
-        { title, content, updated: new Date().toISOString() }, 
-        { where: { id } },
-); */
-    // const postId = getPostById(+id);
     await BlogPost.update( 
         { title, content }, 
         { where: { id } },
@@ -63,4 +58,12 @@ const updatePost = async (title, content, id) => {
     return result;
 };
 
-module.exports = { getAllPosts, getPostById, createPost, updatePost };
+const deletePost = async (id) => {
+    const remove = await BlogPost.destroy(
+        { where: { id } },
+    );
+
+    return remove;
+};
+
+module.exports = { getAllPosts, getPostById, createPost, updatePost, deletePost };

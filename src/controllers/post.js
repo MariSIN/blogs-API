@@ -3,12 +3,14 @@ const {
     getPostById,
     createPost,
     updatePost,
+    deletePost,
 } = require('../services/post.service');
 
 const getPosts = async (_req, res) => {
     const posts = await getAllPosts();
     return res.status(200).json(posts);
 };
+
 const getById = async (req, res) => {
     const { id } = req.params;
 
@@ -51,4 +53,24 @@ const update = async (req, res) => {
     return res.status(200).json(result);
 };
 
-module.exports = { getPosts, getById, insertPost, update };
+const remove = async (req, res) => {
+    const { id } = req.params;
+    const postId = await getPostById(id);
+
+    const { userId } = req.userToken;
+    
+    if (!postId) {
+        return res.status(404).json({
+            message: 'Post does not exist',
+        });
+    }
+
+    if (postId.userId !== userId) {
+         return res.status(401).json({ message: 'Unauthorized user' });
+     }
+
+    await deletePost(id);
+    return res.status(204).end();
+};
+
+module.exports = { getPosts, getById, insertPost, update, remove };
