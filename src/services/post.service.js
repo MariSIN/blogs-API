@@ -58,12 +58,8 @@ const updatePost = async (title, content, id) => {
     return result;
 };
 
-const deletePost = async (id) => {
-    const remove = await BlogPost.destroy(
+const deletePost = async (id) => BlogPost.destroy(
         { where: { id } },
     );
-
-    return remove;
-};
 
 module.exports = { getAllPosts, getPostById, createPost, updatePost, deletePost };

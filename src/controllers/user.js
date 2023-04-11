@@ -2,7 +2,8 @@ const {
     createUser, 
     login, 
     getUser, 
-    getUserById } = require('../services/user.service');
+    getUserById, 
+    deleteUser } = require('../services/user.service');
 
 const addUser = async (req, res) => {
     const { displayName, email, password, image } = req.body;
@@ -33,8 +34,17 @@ const getById = async (req, res) => {
     return res.status(200).json(userId);
 };
 
+const remove = async (req, res) => {
+    const { userId } = req.userToken;
+
+    await deleteUser(userId);
+
+    return res.status(204).end();
+};
+
 module.exports = {
     addUser,
     getUsers,
     getById,
+    remove,
 };

@@ -8,21 +8,26 @@ const login = async (email) => {
     return validToken;
 };
 
-const createUser = ({ displayName, email, password, image }) =>
+const createUser = async ({ displayName, email, password, image }) =>
     User.create({ displayName, email, password, image });
 
-const getUser = () => User.findAll({ attributes: { exclude: ['password'] } });
+const getUser = async () => User.findAll({ attributes: { exclude: ['password'] } });
 
-const getUserById = (id) =>
+const getUserById = async (id) =>
     User.findByPk(id, {
         attributes: {
             exclude: ['password'],
         },
     });
 
+const deleteUser = async (id) => User.destroy({
+    where: { id },
+}); 
+
 module.exports = {
     login,
     createUser,
     getUser,
     getUserById,
+    deleteUser,
 };

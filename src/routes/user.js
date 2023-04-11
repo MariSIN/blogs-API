@@ -13,5 +13,6 @@ validateUser.validateEmail,
 
  router.get('/', validateToken, userController.getUsers);
  router.get('/:id', validateToken, userController.getById);
+ router.delete('/me', validateToken, userController.remove);
 
 module.exports = router;
