@@ -17,14 +17,14 @@ const getAllPosts = async () => {
 };
 
 const getPostById = async (id) => {
-    const postsById = await BlogPost.findByPk(id, {
+    const postId = await BlogPost.findByPk(id, {
         include: [
             { model: User, as: 'user', attributes: { exclude: ['password'] } },
             { model: Category, as: 'categories', through: { attributes: [] } },
         ],
     });
 
-    return postsById;
+    return postId;
 };
 
 const createPost = async (req, userId) => {
@@ -47,4 +47,20 @@ const createPost = async (req, userId) => {
     }
 };
 
-module.exports = { getAllPosts, getPostById, createPost };
+const updatePost = async (title, content, id) => {
+     /* const result = await BlogPost.update(
+        { title, content, updated: new Date().toISOString() }, 
+        { where: { id } },
+); */
+    // const postId = getPostById(+id);
+    await BlogPost.update( 
+        { title, content }, 
+        { where: { id } },
+    );  
+
+    const result = await getPostById(id);
+
+    return result;
+};
+
+module.exports = { getAllPosts, getPostById, createPost, updatePost };
