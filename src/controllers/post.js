@@ -4,6 +4,7 @@ const {
     createPost,
     updatePost,
     deletePost,
+    filterPost,
 } = require('../services/post.service');
 
 const getPosts = async (_req, res) => {
@@ -73,4 +74,11 @@ const remove = async (req, res) => {
     return res.status(204).end();
 };
 
-module.exports = { getPosts, getById, insertPost, update, remove };
+const search = async (req, res) => {
+    const searchTerm = req.query.q;
+    const post = await filterPost(searchTerm);
+
+    res.status(200).json(post);
+};
+
+module.exports = { getPosts, getById, insertPost, update, remove, search };
