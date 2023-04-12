@@ -158,56 +158,12 @@ No projeto, foi desenvolvida uma API e um banco de dados para a produção de co
 - O endpoint deve ser acessível através do URL `/user`;
 - O endpoint deve ser capaz de trazer todos `users` do banco de dados;
 
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-    - Ao listar usuários com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
-    ```json
-    [
-      {
-          "id": 1,
-          "displayName": "Lewis Hamilton",
-          "email": "lewishamilton@gmail.com",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
-      },
-
-      /* ... */
-    ]
-    ```
-
-<br />
-</details>
-
 ---
 
 ## 6 - Sua aplicação deve ter o endpoint GET `/user/:id`
 
 - O endpoint deve ser acessível através do URL `/user/:id`;
 - O endpoint deve ser capaz de trazer o `user` baseado no `id` do banco de dados se ele existir;
-
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-    - Ao listar um usuário com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
-    ```json
-    {
-      "id": 1,
-      "displayName": "Lewis Hamilton",
-      "email": "lewishamilton@gmail.com",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
-    }
-    ```
-
-  * **[Será validado que não é possível listar um usuário inexistente]**
-    - Se o usuário for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
-    ```json
-    {
-      "message": "User does not exist"
-    }
-    ```
-
-<br />
-</details>
 
 ---
 
@@ -238,28 +194,6 @@ No projeto, foi desenvolvida uma API e um banco de dados para a produção de co
 - ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
 - O endpoint deve ser acessível através do URL `/categories`;
 - O endpoint deve ser capaz de trazer todas categorias do banco de dados;
-
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-    - Ao listar categorias com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
-    ```json
-    [
-      {
-          "id": 1,
-          "name": "Inovação"
-      },
-      {
-          "id": 2,
-          "name": "Escola"
-      },
-
-      /* ... */
-    ]
-    ```
-
-<br />
-</details>
 
 ---
 
